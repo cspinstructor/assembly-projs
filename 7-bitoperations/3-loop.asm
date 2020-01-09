@@ -1,5 +1,3 @@
-; stopped at vid 52 practical bit games, pos 2:06
-
 format PE console
 entry start
 
@@ -10,23 +8,13 @@ section '.text' code readable executable
 
 start:
     ; Your program begins here:
-
-    mov     eax,3   ; num  0101
-    mov     edx,4   ; mask 0100
-    and     eax,edx
-
-    jz      bit_is_zero
-    
-    ; bit is not zero
-
-
-
-    jmp     end_if
-bit_is_zero:
-    ; bit is zero
-        
-
-end_if:
+  mov   ecx,32d
+  mov   eax,1 ;counter
+start_loop:
+  call  print_eax
+  inc   eax
+  loop  start_loop
+   
 
     ; Exit the process:
 	push	0

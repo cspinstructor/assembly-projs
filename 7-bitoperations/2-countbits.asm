@@ -1,5 +1,3 @@
-; stopped at vid 52 practical bit games, pos 2:06
-
 format PE console
 entry start
 
@@ -11,22 +9,19 @@ section '.text' code readable executable
 start:
     ; Your program begins here:
 
-    mov     eax,3   ; num  0101
-    mov     edx,4   ; mask 0100
-    and     eax,edx
+    mov     edx,5   ; num  0101 to count bits
+    mov     ecx,0   ; counter
 
-    jz      bit_is_zero
-    
-    ; bit is not zero
+    and     edx,1   ; extract lsb
+    add     ecx,edx ; add to ecx
+    ror     edx,1
+
+    loop    start
+   
+    mov     eax,edx
+    call    print_eax
 
 
-
-    jmp     end_if
-bit_is_zero:
-    ; bit is zero
-        
-
-end_if:
 
     ; Exit the process:
 	push	0
