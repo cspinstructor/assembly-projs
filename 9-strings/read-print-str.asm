@@ -18,14 +18,16 @@ section '.bss' readable writeable
 section '.text' code readable executable
 
 start:
-    ; Your program begins here:
-
+    ; Print instructions
     mov     esi,str1
     call    print_str
     
+    ; Read a line from terminal
     mov     edi,str2
     mov     ecx,ARRAY_SIZE
     call    read_line
+
+    ; Print what the user inputs
     mov     esi,edi
     call    print_str
 
